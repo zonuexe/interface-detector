@@ -56,6 +56,7 @@
                  (const :tag "Default"  'default)
                  (const :tag "Anything" 'anything)
                  (const :tag "Helm"     'helm)
+                 (const :tag "Ivy/Counsel" 'counsel)
                  (const :tag "IDO"      'ido)))
 
 ;;;###autoload
@@ -71,6 +72,7 @@ Return NIL if mutch any interactive interface or `interface-detector-interface' 
            ((and window-system menu-prompting) 'x-popup)
            ((fboundp 'popup-menu) 'popup-el)
            ((and (boundp 'smex-initialized-p) smex-initialized-p) 'smex)
+           ((and (boundp 'counsel-mode) counsel-mode) 'counsel)
            ((and (boundp 'ido-mode) ido-mode) 'ido)
            ((and (boundp 'helm-mode) helm-mode) 'helm)
            ((fboundp 'anything) 'anything)
