@@ -1,0 +1,24 @@
+* Emacs interface-detector
+
+Arbitrate between some interactive interface.  ([[https://emacs-helm.github.io/helm/][Helm]], [[https://www.gnu.org/software/emacs/manual/html_mono/ido.html][ido]] and [[https://www.emacswiki.org/emacs/anything][Anything]]...)
+
+** Why
+
+[[https://github.com/zonuexe/init-open-recentf.el][init-open-recentf]]
+
+** Get Started
+
+*** For users
+
+#+BEGIN_SRC emacs-lisp
+(setq interface-detector-interface 'helm)
+#+END_SRC
+
+*** For Lisp package authors
+
+#+BEGIN_SRC emacs-lisp
+(require 'interface-detector)
+(let ((interface-detector-expected '(anything helm ido)))
+  (interface-detector)) ;; return 'anything, 'helm, 'ido or NIL value
+#+END_SRC
+By constraining the expected value enclosed in let, to protect your code from damage when new interactive interface has added.
